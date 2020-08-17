@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     libxrender1 \
     lmodern \
     netcat \
-    python-dev \
+    python3-dev \
     # ---- nbconvert dependencies ----
     texlive-xetex \
     texlive-fonts-recommended \
@@ -43,11 +43,11 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     swig \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/ektelo/ektelo.git $EKTELO_HOME
+RUN git clone https://github.com/FumiyukiKato/ektelo.git $EKTELO_HOME
 
 # !!baseはcondaだけどめんどくさいのでpipで全部インストールする，よしなにしてくれるのかは知らない
 RUN cd $EKTELO_HOME \
-    && pip install -r resources/requirements.txt
+    && conda install --yes --file resources/requirements.txt
 
 RUN mkdir $EKTELO_LOG_PATH
 
@@ -57,5 +57,6 @@ RUN mkdir -p $EKTELO_DATA \
 
 RUN cd $EKTELO_HOME/ektelo/algorithm && ./setup.sh
 
-# Switch back to jovyan to avoid accidental container runs as root
-USER $NB_UID
+RUN chmod 777 $EKTELO_HOME
+# # Switch back to jovyan to avoid accidental container runs as root
+# USER $NB_UID
