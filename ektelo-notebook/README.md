@@ -5,7 +5,7 @@ $ docker build -t ektelo-jupyter .
 ```
 
 ```
-$ docker run -v `pwd`:/home/jovyan/work -p 10000:8888 ektelo-jupyter
+$ docker run -v `pwd`:/home/jovyan/work -p 8888:8888  ektelo-jupyter
 ```
 
 

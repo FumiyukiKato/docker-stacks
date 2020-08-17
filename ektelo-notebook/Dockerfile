@@ -58,5 +58,8 @@ RUN mkdir -p $EKTELO_DATA \
 RUN cd $EKTELO_HOME/ektelo/algorithm && ./setup.sh
 
 RUN chmod 777 $EKTELO_HOME
+
+ENV PYTHONPATH=$EKTELO_HOME:$PYTHONPATH
+
 # # Switch back to jovyan to avoid accidental container runs as root
 # USER $NB_UID
