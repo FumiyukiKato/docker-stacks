@@ -43,7 +43,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     swig \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/dpcomp-org/dpcomp_core.git $DPCOMP_CORE
+RUN git clone https://github.com/FumiyukiKato/dpcomp_core.git $DPCOMP_CORE
 
 RUN cd $DPCOMP_CORE \
     && conda install --yes --file resources/requirements.txt
