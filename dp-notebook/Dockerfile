@@ -52,7 +52,7 @@ RUN mkdir $DPCOMP_LOG_PATH
 
 RUN cd $DPCOMP_CORE/dpcomp_core/algorithm && ./setup.sh
 
-RUN chmod 777 $DPCOMP_CORE
+RUN chmod 777 $DPCOMP_CORE $HOME/work
 
 # # Switch back to jovyan to avoid accidental container runs as root
 # USER $NB_UID
